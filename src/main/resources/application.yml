@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: order
+  profiles:
+    active: local
+  jpa:
+    show-sql: true
+    database: mysql
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8080/eureka/
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
